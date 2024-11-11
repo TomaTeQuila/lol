@@ -1,0 +1,126 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Card from '../components/Card.astro';
+import HeartLoader from '../rcomponents/HeartLoader';
+
+---
+
+<Layout title="Welcome to Astro.">
+	<main>
+		<div class="container">
+			<div id="card" class="card">
+				<!-- <HeartLoader /> -->
+				<h1>Me <span class="gusto">gustas</span>, te <span class="gusto">gusto</span>? 💕</h1>
+				<div class="botones">
+					<button id="noButton">No 💀</button>
+					<button id="siButton">Si 🤩</button>
+				</div>
+				<div class="teamo">
+					<h2>Te amo tanto mi wawita hermosa, gracias por estos increíbles <span class="gusto">2 AÑOS</span> juntos !! (3 en verdad je), no sabes lo importante
+					que has sido para mi todo este tiempo, te amo con toda mi vida, gracias por todo lo que me has entregado mi wawita.
+					</h2>
+					<img src="https://i.imgur.com/G7bHkaZ.jpeg" alt="">
+				</div>
+			</div>
+		</div>
+	</main>
+</Layout>
+
+<script>
+	document.addEventListener('DOMContentLoaded', () => {
+	const noButton = document.getElementById('noButton');
+	const card = document.getElementById('card'); // Selecciona el contenedor
+
+	if (noButton && card) {
+		noButton.addEventListener('mouseenter', () => {
+			// Obtiene las dimensiones de `card`
+			const maxX = card.clientWidth - noButton.offsetWidth;
+			const maxY = card.clientHeight - noButton.offsetHeight;
+
+			// Genera posiciones aleatorias dentro de los límites de `card`
+			const randomX = Math.floor(Math.random() * maxX);
+			const randomY = Math.floor(Math.random() * maxY);
+
+			// Ajusta la posición del botón en relación con `card`
+			noButton.style.position = 'absolute';
+			noButton.style.left = `${randomX}px`;
+			noButton.style.top = `${randomY}px`;
+		});
+	}
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+	const siButton = document.getElementById('siButton');
+	const teamo = document.querySelector('.teamo') as HTMLElement;
+
+	if (teamo && siButton) {
+		siButton.addEventListener('click', () => {
+			teamo.style.display = 'block';
+		});
+	}
+});
+	
+</script>
+
+<style>
+	h1 {
+		font-size: 3.75rem;
+		text-align: center;
+	}
+	.teamo {
+		display: none;
+	}	
+	.teamo img {
+		width: 100%;
+		height: auto;
+		border-radius: 25px;
+		box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+	}	
+	.container{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		min-height: 100vh;
+	}
+	.gusto {
+		color: pink;
+	}
+
+	.card {
+		background-color: rgba(255, 255, 255, 0.257);
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		border-radius: 10px;
+		padding: 50px;
+	}
+
+
+	button {
+		background-color: #5416845c;
+		border: none;
+		color: black;
+		padding: 15px 62px;
+		text-align: center;
+		text-decoration: none;
+		display: inline-block;
+		font-size: 36px;
+		margin: 8px 12px;
+		cursor: pointer;
+		border-radius: 25px;
+		box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+		color: white;
+	}
+	
+	main {
+		margin: auto;
+		padding: 1rem;
+		width: 800px;
+		max-width: calc(100% - 2rem);
+		color: white;
+		font-size: 20px;
+		line-height: 1.6;
+	}
+	
+</style>
